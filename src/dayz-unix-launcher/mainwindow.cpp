@@ -50,7 +50,7 @@ MainWindow::MainWindow(std::unique_ptr<ARMA3::Client> arma3_client, std::filesys
         this->update_mod_selection_counters(workshop_mod_count, custom_mod_count);
     });
 
-    setWindowIcon(QIcon(":/icons/blagoicons/arma3.png"));
+    setWindowIcon(QIcon(":/icons/blagoicons/dayz.png"));
 
     initialize_theme_combobox();
 
@@ -124,7 +124,7 @@ try
     spdlog::trace("{}:{}", __PRETTY_FUNCTION__, __LINE__);
     for (auto const &executable_name : ARMA3::Definitions::executable_names)
         if (auto pid = StdUtils::IsProcessRunning(executable_name, true); pid != -1)
-            throw std::runtime_error("Arma is already running");
+            throw std::runtime_error("DayZ is already running");
 
     manager.save_settings_from_ui(ui);
 
@@ -291,7 +291,7 @@ try
         auto mod_dir = std::filesystem::canonical(mod_dir_string);
         if (mod_dir == client->GetPath())
         {
-            failed_mods += fmt::format("{} is Arma's main directory.\n", mod_dir);
+            failed_mods += fmt::format("{} is DayZ's main directory.\n", mod_dir);
             continue;
         }
 
@@ -368,7 +368,7 @@ try
                         "Selected mod is in workshop mod, please unsubscribe from it in Steam's options").exec();
             return;
         }
-        else if (StringUtils::StartsWith(mod.path_or_workshop_id, "~arma"))
+        else if (StringUtils::StartsWith(mod.path_or_workshop_id, "~dayz"))
         {
             QMessageBox(QMessageBox::Icon::Information, "Cannot remove custom mod",
                         "Selected mod is in home directory, delete its files manually").exec();
@@ -394,11 +394,11 @@ catch (std::exception const &ex)
 
 void MainWindow::check_if_arma_is_running()
 {
-    std::string text = "Status: Arma 3 is not running";
+    std::string text = "Status: DayZ is not running";
     for (auto const &executable_name : ARMA3::Definitions::executable_names)
         if (auto pid = StdUtils::IsProcessRunning(executable_name, true); pid != -1)
         {
-            text = fmt::format("Status: Arma 3 is running, PID: {}", pid);
+            text = fmt::format("Status: DayZ is running, PID: {}", pid);
             break;
         }
 
@@ -893,12 +893,12 @@ void MainWindow::initialize_theme_combobox()
 
 std::string MainWindow::ui_path_to_full_path(std::string ui_path) const
 {
-    return StringUtils::Replace(ui_path, "~arma", client->GetPath().string());
+    return StringUtils::Replace(ui_path, "~dayz", client->GetPath().string());
 }
 
 std::string MainWindow::full_path_to_ui_path(std::string ui_path) const
 {
-    return StringUtils::Replace(ui_path, client->GetPath().string(), "~arma");
+    return StringUtils::Replace(ui_path, client->GetPath().string(), "~dayz");
 }
 
 bool MainWindow::is_workshop_mod(std::string const &path_or_workshop_id)

@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.11)
-project(arma3-unix-launcher)
+project(dayz-unix-launcher)
 
 include(cmake/external_dependencies.cmake)
 include(cmake/functions.cmake)

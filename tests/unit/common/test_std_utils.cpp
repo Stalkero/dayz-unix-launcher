@@ -54,7 +54,7 @@ TEST_CASE("GetConfigFilePath")
 
     GIVEN("Filename to get config path for")
     {
-        std::filesystem::path config_file = "a3unixlauncher.cfg";
+        std::filesystem::path config_file = "dayzunixlauncher.cfg";
 
         WHEN("XDG_CONFIG_HOME is not set")
         {
@@ -63,7 +63,7 @@ TEST_CASE("GetConfigFilePath")
             auto path = GetConfigFilePath(config_file);
 
             THEN("$HOME/.config is used")
-            CHECK_EQ(fmt::format("{}/.config/a3unixlauncher/{}", getenv("HOME"), config_file.string()), path);
+            CHECK_EQ(fmt::format("{}/.config/dayzunixlauncher/{}", getenv("HOME"), config_file.string()), path);
         }
 
         WHEN("XDG_CONFIG_HOME is set")
@@ -74,7 +74,7 @@ TEST_CASE("GetConfigFilePath")
             auto path = GetConfigFilePath(config_file);
 
             THEN("XDG_CONFIG_HOME is used")
-            CHECK_EQ(fmt::format("{}/a3unixlauncher/{}", xdg_config_home.string(), config_file.string()), path);
+            CHECK_EQ(fmt::format("{}/dayzunixlauncher/{}", xdg_config_home.string(), config_file.string()), path);
         }
     }
 }

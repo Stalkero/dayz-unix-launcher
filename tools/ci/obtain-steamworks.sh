@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 if [ ! -f /tmp/key.gpg ]; then
-    echo "This script is intended for CI usage by arma3-unix-launcher, you shouldn't run it manually"
+    echo "This script is intended for CI usage by -launcher, you shouldn't run it manually"
     exit 1
 fi
 

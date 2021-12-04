@@ -4,7 +4,7 @@ set -euxo pipefail
 SELF_PATH=`dirname "$(readlink -f $0)"`
 cd "$SELF_PATH"
 
-A3UL_DIR="${1:-/arma3-unix-launcher}"
+A3UL_DIR="${1:-/dayz-unix-launcher}"
 BUILD_DIR="${2:-/tmp/build}"
 OUTPUT_DIR="${3:-/build}"
 STEAMWORKS_SDK_PATH="${4:-}"
@@ -22,7 +22,7 @@ pushd $A3UL_DIR
   COMMIT_COUNT=`git rev-list HEAD --count`
 popd
 
-PKG_DIR="$BUILD_DIR/arma3-unix-launcher-$COMMIT_COUNT.$SHORT_HASH-$ID-$VERSION_ID-amd64"
+PKG_DIR="$BUILD_DIR/dayz-unix-launcher-$COMMIT_COUNT.$SHORT_HASH-$ID-$VERSION_ID-amd64"
 mkdir -p $PKG_DIR/DEBIAN
 
 sed "s/VERSION/$COMMIT_COUNT.$SHORT_HASH/g" ./control >$PKG_DIR/DEBIAN/control

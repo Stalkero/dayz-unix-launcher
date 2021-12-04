@@ -12,26 +12,26 @@ namespace ARMA3::Definitions
 {
     static std::string home_directory = getenv("HOME");
 
-    static constexpr char const *app_id = "107410";
+    static constexpr char const *app_id = "221100";
 
     static const std::array<char const *, 28> exclusions{"Addons", "AoW", "Argo", "BattlEye", "Contact", "Curator", "Dll", "Dta", "Enoch", "Expansion", "fontconfig", "GM", "CSLA", "Heli", "Jets", "Kart", "Keys", "Launcher", "MPMissions", "Mark", "Missions", "Orange", "Tacops", "Tank", "vn", "WS", "legal", "steam_shader_cache"};
     TODO_BEFORE(2, 2022, "Use dta/product.bin for exclusion list");
 
     #ifdef __linux
-    static constexpr std::array<char const *, 2> const executable_names {"arma3.x86_64", "arma3_x64.exe"};
+    static constexpr std::array<char const *, 3> const executable_names {"arma3.x86_64", "DayZ_x64.exe","DayZ_BE.exe"};
     static constexpr char const *local_share_prefix = ".local/share";
-    static constexpr char const *bohemia_interactive_prefix = "bohemiainteractive/arma3";
-    static constexpr char const *game_config_path = "GameDocuments/Arma 3/Arma3.cfg";
+    static constexpr char const *bohemia_interactive_prefix = "bohemiainteractive/dayz";
+    static constexpr char const *game_config_path = "GameDocuments/DayZ/DayZ.cfg";
     #else //__APPLE__
     static constexpr std::array<char const *, 1> const executable_names {"ArmA3.app"};
     static constexpr char const *local_share_prefix = "Library/Application Support";
     static constexpr char const *bohemia_interactive_prefix = "com.vpltd.Arma3";
-    static constexpr char const *game_config_path = "GameDocuments/Arma 3/Arma3.cfg";
+    static constexpr char const *game_config_path = "GameDocuments/DayZ/DayZ.cfg";
     #endif
 
     static constexpr char const *flatpak_prefix = ".var/app/com.valvesoftware.Steam";
     static constexpr char const *proton_config_relative_path =
-        "../../compatdata/107410/pfx/drive_c/users/steamuser/My Documents/Arma 3/Arma3.cfg";
+        "../../compatdata/221100/pfx/drive_c/users/steamuser/My Documents/DayZ/DayZ.cfg";
 }
 
 namespace ARMA3

@@ -17,7 +17,7 @@
    </sizepolicy>
   </property>
   <property name="windowTitle">
-   <string>Choose ARMA 3 and Workshop paths</string>
+   <string>Choose DayZ and Workshop paths</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="sizeConstraint">
@@ -59,7 +59,7 @@
         </size>
        </property>
        <property name="text">
-        <string>ARMA 3 path</string>
+        <string>DayZ path</string>
        </property>
       </widget>
      </item>

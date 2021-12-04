@@ -16,7 +16,7 @@ if (APPLE)
     # todo: set correct rpath
     set(STEAMWORKS_LIB_PATH "${STEAMWORKS_SDK_PATH}/sdk/redistributable_bin/osx/libsteam_api.dylib")
 else()
-    set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/share/arma3-unix-launcher/lib")
+    set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/share/dayz-unix-launcher/lib")
     set(STEAMWORKS_LIB_PATH "${STEAMWORKS_SDK_PATH}/sdk/redistributable_bin/linux64/libsteam_api.so")
 endif()
 set_property(TARGET steamworks_sdk PROPERTY IMPORTED_LOCATION "${STEAMWORKS_LIB_PATH}")

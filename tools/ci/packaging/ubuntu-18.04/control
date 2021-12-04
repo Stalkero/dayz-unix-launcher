@@ -1,9 +1,9 @@
-Package: arma3-unix-launcher
+Package: dayz-unix-launcher
 Version: VERSION
 Architecture: amd64
 Maintainer: muttleyxd <mateusz@szychowski.it>
 Depends: libqt5widgets5, libqt5svg5
 Section: testing
 Priority: optional
-Homepage: https://github.com/muttleyxd/arma3-unix-launcher.git
+Homepage: https://github.com/muttleyxd/dayz-unix-launcher.git
 Description: Advanced launcher Linux and Mac ArmA 3

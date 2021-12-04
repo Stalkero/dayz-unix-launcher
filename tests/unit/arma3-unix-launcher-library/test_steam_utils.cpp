@@ -69,7 +69,7 @@ class SteamUtilsTests
         std::filesystem::path const default_library_folders_path = default_steam_path / "config/libraryfolders.vdf";
 
         std::string const empty_file_content = "";
-        std::string const arma3_workshop_id = "107410";
+        std::string const arma3_workshop_id = "221100";
 
         std::string_view const vdf_config = R"vdf(
 "libraryfolders"
@@ -150,13 +150,13 @@ TEST_CASE_FIXTURE(SteamUtilsTests, "GetGamePathFromInstallPath_Success")
 {
     GIVEN("Valid appmanifest for Arma 3 game")
     {
-        std::filesystem::path const arma3_path = default_steam_path / "steamapps/common/Arma 3";
-        std::filesystem::path const arma3_manifest_path = default_steam_path / "steamapps/appmanifest_107410.acf";
+        std::filesystem::path const arma3_path = default_steam_path / "steamapps/common/DayZ";
+        std::filesystem::path const arma3_manifest_path = default_steam_path / "steamapps/appmanifest_221100.acf";
 
         REQUIRE_CALL(filesystemUtilsMock, Exists(default_config_path)).RETURN(true);
         REQUIRE_CALL(filesystemUtilsMock, RealPath(default_steam_path)).RETURN(default_steam_path);
         REQUIRE_CALL(stdUtilsMock, FileReadAllText(arma3_manifest_path)).LR_RETURN(empty_file_content);
-        REQUIRE_CALL(vdfMock, LoadFromText(empty_file_content, false, _)).SIDE_EFFECT(_3.KeyValue["AppState/installdir"] = "Arma 3");
+        REQUIRE_CALL(vdfMock, LoadFromText(empty_file_content, false, _)).SIDE_EFFECT(_3.KeyValue["AppState/installdir"] = "DayZ");
 
         SteamUtils steam({default_steam_path});
         WHEN("Getting install path of Arma 3")
@@ -173,7 +173,7 @@ TEST_CASE_FIXTURE(SteamUtilsTests, "GetWorkshopDir_Success")
 {
     GIVEN("Valid appid for installed game")
     {
-        std::string const invalid_game = "107411";
+        std::string const invalid_game = "221100";
         std::filesystem::path const expected_workshop_path = default_steam_path / "steamapps/workshop/content" / arma3_workshop_id;
         std::filesystem::path const not_existing_workshop_path = default_steam_path / "steamapps/workshop/content" / invalid_game;
 
@@ -199,7 +199,7 @@ TEST_CASE_FIXTURE(SteamUtilsTests, "GetWorkshopDir_Failed_NotExistingApp")
 {
     GIVEN("Valid appid for installed game")
     {
-        std::string const invalid_game = "107411";
+        std::string const invalid_game = "221100";
         std::filesystem::path const not_existing_workshop_path = default_steam_path / "steamapps/workshop/content" / invalid_game;
 
         REQUIRE_CALL(filesystemUtilsMock, Exists(default_config_path)).RETURN(true);
@@ -222,7 +222,7 @@ TEST_CASE_FIXTURE(SteamUtilsTests, "GetCompatibilityToolForAppId")
 {
     GIVEN("App id to find compatibility tool for")
     {
-        std::uint64_t const appid = 107410;
+        std::uint64_t const appid = 221100;
 
         REQUIRE_CALL(filesystemUtilsMock, Exists(default_config_path)).RETURN(true);
         REQUIRE_CALL(filesystemUtilsMock, RealPath(default_steam_path)).RETURN(default_steam_path);
@@ -366,7 +366,7 @@ TEST_CASE_FIXTURE(SteamUtilsTests, "GetInstallPathFromGamePath_Success")
 {
     GIVEN("Game install path")
     {
-        auto const game_path = default_steam_path / "steamapps/common/Arma 3";
+        auto const game_path = default_steam_path / "steamapps/common/DayZ";
 
         REQUIRE_CALL(filesystemUtilsMock, Exists(default_config_path)).RETURN(true);
         REQUIRE_CALL(filesystemUtilsMock, RealPath(default_steam_path)).RETURN(default_steam_path);

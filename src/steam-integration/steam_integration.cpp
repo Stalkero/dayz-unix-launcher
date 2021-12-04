@@ -59,7 +59,7 @@ namespace
         }
 
         auto old_path = fs::CurrentPath();
-        std::filesystem::path tmp_path = fmt::format("{}/arma3-unix-launcher.{}", fs::TempDirectoryPath().string(), getpid());
+        std::filesystem::path tmp_path = fmt::format("{}/dayz-unix-launcher.{}", fs::TempDirectoryPath().string(), getpid());
         fs::CreateDirectories(tmp_path);
         fs::CurrentPath(tmp_path);
         StdUtils::FileWriteAllText(tmp_path / "steam_appid.txt", app_id);
@@ -154,7 +154,7 @@ namespace Steam
 
     bool Integration::reinitialize()
     {
-        return initialize_steam_api("107410");
+        return initialize_steam_api("221100");
     }
 
     bool Integration::is_initialized() const

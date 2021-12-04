@@ -56,9 +56,9 @@ void start_arma(std::filesystem::path const &preset_to_run, std::string const &a
 
     for (auto const &mod : mods)
         if (mod["enabled"])
-            enabled_mods.emplace_back(StringUtils::Replace(mod["path"], "~arma", client.GetPath()));
+            enabled_mods.emplace_back(StringUtils::Replace(mod["path"], "~dayz", client.GetPath()));
 
-    spdlog::info("Starting Arma with preset {}\n", preset_to_run);
+    spdlog::info("Starting DayZ with preset {}\n", preset_to_run);
     client.CreateArmaCfg(enabled_mods);
     client.Start(arguments, user_environment_variables, false, disable_esync);
 }
@@ -72,12 +72,12 @@ int main(int argc, char *argv[])
         spdlog::set_pattern("[%Y-%m-%d %H:%M:%S.%e] [%^%l%$] %v");
 
         QApplication a(argc, argv);
-        argparse::ArgumentParser parser("arma3-unix-launcher");
+        argparse::ArgumentParser parser("dayz-unix-launcher");
 
         parser.add_argument("-l", "--list-presets").help("list available mod presets").default_value(false).implicit_value(
             true);
         parser.add_argument("-p",
-                            "--preset-to-run").help("preset to run, launcher will start Arma with given mods and exit").nargs(1);
+                            "--preset-to-run").help("preset to run, launcher will start DayZ with given mods and exit").nargs(1);
         parser.add_argument("--server-ip").help("server ip to connect to, usable only with --preset-to-run").nargs(1);
         parser.add_argument("--server-port").help("server port to connect to, usable only with --preset-to-run").nargs(1);
         parser.add_argument("--server-password").help("server password to connect to, usable only with --preset-to-run").nargs(
@@ -112,7 +112,7 @@ int main(int argc, char *argv[])
         if (parser.get<bool>("--verbose"))
             spdlog::set_level(spdlog::level::trace);
 
-        spdlog::info("Started Arma 3 Unix Launcher, config file path: {}", config_file);
+        spdlog::info("Started DayZ Unix Launcher, config file path: {}", config_file);
 
         Settings manager(config_file);
 
@@ -120,7 +120,7 @@ int main(int argc, char *argv[])
 
         try
         {
-            arma_path = manager.settings.at("paths").at("arma");
+            arma_path = manager.settings.at("paths").at("dayz");
             workshop_path = manager.settings.at("paths").at("workshop");
         }
         catch (std::exception const &ex)
@@ -167,18 +167,18 @@ int main(int argc, char *argv[])
                 if (apcd.result() != QDialog::Accepted)
                     exit(0);
 
-                spdlog::info("Arma3: '{}' Workshop: '{}'", apcd.arma_path_, apcd.workshop_path_);
+                spdlog::info("DayZ: '{}' Workshop: '{}'", apcd.arma_path_, apcd.workshop_path_);
                 arma_path = apcd.arma_path_;
                 workshop_path = apcd.workshop_path_;
                 client = std::make_unique<ARMA3::Client>(arma_path, workshop_path);
             }
         }
 
-        manager.settings["paths"]["arma"] = arma_path;
+        manager.settings["paths"]["dayz"] = arma_path;
         manager.settings["paths"]["workshop"] = workshop_path;
         manager.save_settings_to_disk();
 
-        spdlog::debug("arma path: '{}', workshop path: '{}'", arma_path, workshop_path);
+        spdlog::debug("dayz path: '{}', workshop path: '{}'", arma_path, workshop_path);
 
         auto preset_to_run = read_argument("--preset-to-run", parser);
         if (!preset_to_run.empty())

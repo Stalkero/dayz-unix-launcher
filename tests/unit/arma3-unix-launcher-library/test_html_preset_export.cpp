@@ -25,7 +25,7 @@ TEST_CASE_FIXTURE(HtmlPresetExportTests, "ExportHtmlPreset_SingleSteamMod")
 {
     std::string const expected_preset = R"preset(<?xml version="1.0" encoding="utf-8"?>
 <html>
-  <!--Exported with Arma 3 Unix Launcher: https://github.com/muttleyxd/arma3-unix-launcher-->
+  <!--Exported with Arma 3 Unix Launcher: https://github.com/muttleyxd/-launcher-->
   <head>
     <meta name="arma:Type" content="preset" />
     <meta name="arma:PresetName" content="test preset" />
@@ -107,7 +107,7 @@ a:hover {
       <table/>
     </div>
     <div class="footer">
-      <span>Exported with <a href="https://github.com/muttleyxd/arma3-unix-launcher">Arma 3 Unix Launcher</a>.</span>
+      <span>Exported with <a href="https://github.com/muttleyxd/-launcher">Arma 3 Unix Launcher</a>.</span>
     </div>
   </body>
 </html>

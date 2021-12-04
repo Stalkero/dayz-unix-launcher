@@ -33,11 +33,11 @@ class ARMA3ClientTests
         StdUtilsMock stdUtilsMock;
         VdfMock vdfMock;
 
-        std::filesystem::path const arma_path = "/arma_path";
+        std::filesystem::path const arma_path = "/dayz_path";
         std::filesystem::path const workshop_path = "/workshop_path";
         std::string const mac_executable_name = "ArmA3.app";
         std::string const linux_executable_name = "arma3.x86_64";
-        std::string const proton_executable_name = "arma3_x64.exe";
+        std::string const proton_executable_name = "DayZ_x64.exe";
 
         std::filesystem::path get_executable_path()
         {
@@ -384,7 +384,7 @@ TEST_CASE_FIXTURE(ARMA3ClientTests, "Start_Linux_DirectLaunch")
 
         WHEN("Arma path contains ARMA 3 Proton executable")
         {
-            std::uint64_t const arma_id = 107410;
+            std::uint64_t const arma_id = 221100;
             std::string const executable_path = arma_path / proton_executable_name;
             std::filesystem::path const steam_path = "/steam_path";
             std::filesystem::path const proton_path = "/proton_dir/proton";
@@ -411,7 +411,7 @@ TEST_CASE_FIXTURE(ARMA3ClientTests, "Start_Linux_DirectLaunch")
                     unsetenv("LD_PRELOAD");
                     THEN("Arma is started with passed arguments")
                     {
-                        constexpr char const* launch_command = R"command(env  SteamGameId=107410 LD_PRELOAD=/steam_path/ubuntu12_64/gameoverlayrenderer.so STEAM_COMPAT_DATA_PATH="/steam_path/steamapps/compatdata/107410"   "/proton_dir/proton" run "/arma_path/arma3_x64.exe" some random arguments)command";
+                        constexpr char const* launch_command = R"command(env  SteamGameId=221100 LD_PRELOAD=/steam_path/ubuntu12_64/gameoverlayrenderer.so STEAM_COMPAT_DATA_PATH="/steam_path/steamapps/compatdata/221100"   "/proton_dir/proton" run "/dayz_path/DayZ_x64.exe" some random arguments)command";
 
                         REQUIRE_CALL(stdUtilsMock, StartBackgroundProcess(launch_command, working_directory));
                         a3c.Start(arguments, "", true, false);
@@ -423,7 +423,7 @@ TEST_CASE_FIXTURE(ARMA3ClientTests, "Start_Linux_DirectLaunch")
                     setenv("LD_PRELOAD", "somelib.so", true);
                     THEN("Arma is started with passed arguments and LD_PRELOAD value is preserved, along with gameoverlayrenderer.so")
                     {
-                        constexpr char const* launch_command = R"command(env  SteamGameId=107410 LD_PRELOAD=/steam_path/ubuntu12_64/gameoverlayrenderer.so:somelib.so STEAM_COMPAT_DATA_PATH="/steam_path/steamapps/compatdata/107410"   "/proton_dir/proton" run "/arma_path/arma3_x64.exe" some random arguments)command";
+                        constexpr char const* launch_command = R"command(env  SteamGameId=107410 LD_PRELOAD=/steam_path/ubuntu12_64/gameoverlayrenderer.so:somelib.so STEAM_COMPAT_DATA_PATH="/steam_path/steamapps/compatdata/221100"   "/proton_dir/proton" run "/dayz_path/DayZ_x64.exe" some random arguments)command";
 
                         REQUIRE_CALL(stdUtilsMock, StartBackgroundProcess(launch_command, working_directory));
                         a3c.Start(arguments, "", true, false);
@@ -441,7 +441,7 @@ TEST_CASE_FIXTURE(ARMA3ClientTests, "Start_Linux_DirectLaunch")
                 // LD_PRELOAD preservation applies here, but no need to repeat the code
                 THEN("Arma is started with passed arguments and PROTON_NO_ESYNC environment variable set to 1")
                 {
-                    constexpr char const* launch_command = R"command(env PROTON_NO_ESYNC=1 SteamGameId=107410 LD_PRELOAD=/steam_path/ubuntu12_64/gameoverlayrenderer.so STEAM_COMPAT_DATA_PATH="/steam_path/steamapps/compatdata/107410"   "/proton_dir/proton" run "/arma_path/arma3_x64.exe" some random arguments)command";
+                    constexpr char const* launch_command = R"command(env PROTON_NO_ESYNC=1 SteamGameId=221100 LD_PRELOAD=/steam_path/ubuntu12_64/gameoverlayrenderer.so STEAM_COMPAT_DATA_PATH="/steam_path/steamapps/compatdata/221100"   "/proton_dir/proton" run "/dayz_path/DayZ_x64.exe" some random arguments)command";
 
                     REQUIRE_CALL(stdUtilsMock, StartBackgroundProcess(launch_command, working_directory));
                     a3c.Start(arguments, "", true, true);
@@ -456,7 +456,7 @@ TEST_CASE_FIXTURE(ARMA3ClientTests, "Start_Linux_IndirectLaunchThroughSteam")
     GIVEN("Arma 3 Client")
     {
         std::string const arguments = "some random arguments";
-        std::string const steam_command = "steam -applaunch 107410";
+        std::string const steam_command = "steam -applaunch 221100";
 
         REQUIRE_CALL(steamUtilsMock, Constructor(_, _)).THROW(std::runtime_error(""));
 
@@ -523,7 +523,7 @@ TEST_CASE_FIXTURE(ARMA3ClientTests, "Start_Mac_OS_X")
     {
         std::string const arguments = "some random arguments";
         std::string const arguments_whitespaces_replaced = "some%20random%20arguments";
-        std::string const steam_command = "open steam://run/107410//";
+        std::string const steam_command = "open steam://run/221100//";
 
         REQUIRE_CALL(filesystemUtilsMock, Exists(get_executable_path())).RETURN(true);
         ARMA3::Client a3c(arma_path, workshop_path);

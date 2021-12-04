@@ -139,11 +139,11 @@ namespace StdUtils
 
     std::filesystem::path GetConfigFilePath(std::filesystem::path const &config_filename)
     {
-        std::filesystem::path config_directory = fmt::format("{}/.config/a3unixlauncher", getenv("HOME"));
+        std::filesystem::path config_directory = fmt::format("{}/.config/dayzunixlauncher", getenv("HOME"));
 
         auto xdg_config_home = getenv("XDG_CONFIG_HOME");
         if (xdg_config_home)
-            config_directory = fmt::format("{}/a3unixlauncher", xdg_config_home);
+            config_directory = fmt::format("{}/dayzunixlauncher", xdg_config_home);
 
         return config_directory / config_filename;
     }

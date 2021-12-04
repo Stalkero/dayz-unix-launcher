@@ -59,7 +59,7 @@ namespace
     void direct_launch(std::filesystem::path const &arma_path, std::filesystem::path const &executable_path,
                        string const &arguments, bool is_proton, string const &user_environment_variables, bool disable_esync)
     {
-        spdlog::trace("{}:{} arma path: '{}', executable path: '{}', arguments: {}, is_proton: {}, user_environment_variables: {}, disable_esync: {}",
+        spdlog::trace("{}:{} dayz path: '{}', executable path: '{}', arguments: {}, is_proton: {}, user_environment_variables: {}, disable_esync: {}",
                       __PRETTY_FUNCTION__, __LINE__, arma_path, executable_path, arguments, is_proton, user_environment_variables,
                       disable_esync);
         if (!is_proton)
@@ -87,7 +87,7 @@ namespace
             auto const command = fmt::format(R"command(env {} {} {} {} {} "{}" {})command", environment, user_environment_variables,
                                              optional_steam_runtime(steam_utils), compatibility_tool.first,
                                              get_verb(compatibility_tool.second), executable_path.string(), arguments);
-            spdlog::info("Running Arma:\n{}\n", command);
+            spdlog::info("Running DayZ:\n{}\n", command);
             StdUtils::StartBackgroundProcess(command, arma_path.string());
         }
         catch (std::exception const &e)
@@ -102,10 +102,10 @@ namespace
         spdlog::trace("{}:{}", __PRETTY_FUNCTION__, __LINE__);
         if (is_proton)
             StdUtils::StartBackgroundProcess(
-                fmt::format("flatpak run --env=\"{} {}\" com.valvesoftware.Steam -applaunch 107410 -nolauncher {}",
+                fmt::format("flatpak run --env=\"{} {}\" com.valvesoftware.Steam -applaunch 221100 -nolauncher {}",
                             get_esync_prefix(disable_esync), user_environment_variables, arguments));
         else
-            StdUtils::StartBackgroundProcess(fmt::format("flatpak run com.valvesoftware.Steam -applaunch 107410 -nolauncher {}",
+            StdUtils::StartBackgroundProcess(fmt::format("flatpak run com.valvesoftware.Steam -applaunch 221100 -nolauncher {}",
                                              arguments));
     }
 
@@ -114,10 +114,10 @@ namespace
     {
         spdlog::trace("{}:{}", __PRETTY_FUNCTION__, __LINE__);
         if (is_proton)
-            StdUtils::StartBackgroundProcess(fmt::format("env {} {} steam -applaunch 107410 -nolauncher {}",
+            StdUtils::StartBackgroundProcess(fmt::format("env {} {} steam -applaunch 221100 -nolauncher {}",
                                              get_esync_prefix(disable_esync), user_environment_variables, arguments));
         else
-            StdUtils::StartBackgroundProcess(fmt::format("env {} steam -applaunch 107410 {}", user_environment_variables,
+            StdUtils::StartBackgroundProcess(fmt::format("env {} steam -applaunch 221100 {}", user_environment_variables,
                                              arguments));
     }
 
@@ -148,7 +148,7 @@ namespace ARMA3
             }
         }
         if (path_executable_.empty())
-            throw FileNotFoundException("arma3.exe");
+            throw FileNotFoundException("");
         path_workshop_target_ = target_workshop_path;
     }
 
@@ -183,7 +183,7 @@ namespace ARMA3
 
     bool Client::IsProton()
     {
-        return path_executable_.filename() == "arma3_x64.exe";
+        return path_executable_.filename() == "DayZ_x64.exe";
     }
 
     void Client::Start(string const &arguments, string const& user_environment_variables, bool launch_directly, bool disable_esync)
@@ -218,7 +218,7 @@ namespace ARMA3
         }
         else
         {
-            std::string launch_command = fmt::format("env {} open steam://run/107410//" + StringUtils::Replace(arguments, " ", "%20"), user_environment_variables);
+            std::string launch_command = fmt::format("env {} open steam://run/221100//" + StringUtils::Replace(arguments, " ", "%20"), user_environment_variables);
             StdUtils::StartBackgroundProcess(launch_command);
         }
         #endif

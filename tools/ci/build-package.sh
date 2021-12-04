@@ -72,7 +72,7 @@ else
 fi
 
 COMMAND_SET="cd /build && ./build.sh";
-docker run -it -v "$SELF_PATH"/packaging/$BUILD_TARGET:/build -v "$SELF_PATH"/../..:/arma3-unix-launcher --rm $IMAGE_TO_USE bash -c "$COMMAND_SET"
+docker run -it -v "$SELF_PATH"/packaging/$BUILD_TARGET:/build -v "$SELF_PATH"/../..:/dayz-unix-launcher --rm $IMAGE_TO_USE bash -c "$COMMAND_SET"
 if [ "$?" -eq 0 ]; then
     echo "Build successful, package available at: "
     find . -mmin -1 -type f -exec realpath {} +

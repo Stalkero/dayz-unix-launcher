@@ -6,7 +6,7 @@ namespace
 {
     constexpr char const *PRESET_TEMPLATE = R"modPreset(<?xml version="1.0" encoding="utf-8"?>
 <html>
-  <!--Exported with Arma 3 Unix Launcher: https://github.com/muttleyxd/arma3-unix-launcher-->
+  <!--Exported with Arma 3 Unix Launcher: https://github.com/muttleyxd/-launcher-->
   <head>
     <meta name="arma:Type" content="preset" />
     <meta name="arma:PresetName" content="{preset_name}" />
@@ -80,7 +80,7 @@ a:hover {{
       <table/>
     </div>
     <div class="footer">
-      <span>Exported with <a href="https://github.com/muttleyxd/arma3-unix-launcher">Arma 3 Unix Launcher</a>.</span>
+      <span>Exported with <a href="https://github.com/muttleyxd/-launcher">Arma 3 Unix Launcher</a>.</span>
     </div>
   </body>
 </html>
@@ -121,7 +121,7 @@ std::string export_mods(std::string_view preset_name, std::vector<Mod> const& mo
         if (mod.IsWorkshopMod(workshop_path))
             mod_list += fmt::format(STEAM_MOD_TEMPLATE, "mod_name"_a=mod.GetName(), "workshop_id"_a=mod.path_.filename().string());
         else
-            mod_list += fmt::format(LOCAL_MOD_TEMPLATE, "mod_name"_a=mod.GetName(), "mod_dir"_a=mod.path_.filename().string(), "mod_link"_a=mod.GetValueOrReturnDefault("url", "action", "https://github.com/muttleyxd/arma3-unix-launcher"));
+            mod_list += fmt::format(LOCAL_MOD_TEMPLATE, "mod_name"_a=mod.GetName(), "mod_dir"_a=mod.path_.filename().string(), "mod_link"_a=mod.GetValueOrReturnDefault("url", "action", "https://github.com/muttleyxd/-launcher"));
     }
     return fmt::format(PRESET_TEMPLATE, "mod_list"_a=StringUtils::trim_right(mod_list), "preset_name"_a=preset_name);
 }

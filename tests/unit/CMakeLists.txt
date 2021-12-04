@@ -5,5 +5,5 @@ if (TRACE_MOCKS)
     string(APPEND CMAKE_CXX_FLAGS " -include ${CMAKE_CURRENT_SOURCE_DIR}/mock/mock_tracer.hpp")
 endif()
 
-add_subdirectory(arma3-unix-launcher-library)
+add_subdirectory(dayz-unix-launcher-library)
 add_subdirectory(common)

@@ -55,7 +55,7 @@ void ArmaPathChooserDialog::on_text_arma_path_textChanged(QString const &arg1)
 
     button_ok_->setEnabled(true);
     ui->icon_arma_path->setPixmap(pixmap_ok_);
-    QString workshop_path = ui->text_arma_path->text() + "/../../workshop/content/107410";
+    QString workshop_path = ui->text_arma_path->text() + "/../../workshop/content/221100";
     try
     {
         std::filesystem::path canonical_path = std::filesystem::canonical(workshop_path.toStdString());
@@ -79,7 +79,7 @@ void ArmaPathChooserDialog::on_button_browse_arma_path_clicked()
 {
     using namespace std::filesystem;
 
-    auto open_executable_dialog = get_open_dialog("Select ArmA 3 executable");
+    auto open_executable_dialog = get_open_dialog("Select DayZ executable");
     open_executable_dialog->setFileMode(QFileDialog::ExistingFile);
     int result = open_executable_dialog->exec();
     if (!result)
@@ -92,7 +92,7 @@ void ArmaPathChooserDialog::on_button_browse_arma_path_clicked()
 
 void ArmaPathChooserDialog::on_button_browse_workshop_path_clicked()
 {
-    auto open_dir_dialog = get_open_dialog("Select ArmA 3 workshop path");
+    auto open_dir_dialog = get_open_dialog("Select DayZ workshop path");
     open_dir_dialog->setOption(QFileDialog::ShowDirsOnly);
     int result = open_dir_dialog->exec();
     if (!result)

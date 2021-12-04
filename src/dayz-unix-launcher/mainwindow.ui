@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Arma 3 Unix Launcher</string>
+   <string>DayZ Unix Launcher</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -155,7 +155,7 @@
             <item>
              <widget class="QLabel" name="label_arma_status">
               <property name="text">
-               <string>Status: Arma 3 is not running</string>
+               <string>Status: DayZ is not running</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignCenter</set>

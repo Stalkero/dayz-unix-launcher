@@ -93,7 +93,7 @@ steps:
   commands:
     - cd /tmp/build
     - mv $(echo *.tar.*) $(echo *.tar.* | sed 's/x86_64.pkg.tar./archlinux-x86_64.pkg.tar./g')
-    - github-release --token $GITHUB_PUBLISH_TOKEN --repository muttleyxd/arma3-unix-launcher --file-glob "/tmp/build/*.tar.*"
+    - github-release --token $GITHUB_PUBLISH_TOKEN --repository muttleyxd/dayz-unix-launcher --file-glob "/tmp/build/*.tar.*"
   when:
     event: [push, tag, deployment]
     branch:
@@ -152,7 +152,7 @@ steps:
       from_secret: github_publish_key
   commands:
     - cd /tmp/build
-    - github-release --token $GITHUB_PUBLISH_TOKEN --repository muttleyxd/arma3-unix-launcher --file-glob "/tmp/build/*.AppImage"
+    - github-release --token $GITHUB_PUBLISH_TOKEN --repository muttleyxd/dayz-unix-launcher --file-glob "/tmp/build/*.AppImage"
   volumes:
   - name: package
     path: /tmp/build
@@ -207,7 +207,7 @@ steps:
       from_secret: github_publish_key
   commands:
     - cd /tmp/build
-    - github-release --token $GITHUB_PUBLISH_TOKEN --repository muttleyxd/arma3-unix-launcher --file-glob "/tmp/build/*.deb"
+    - github-release --token $GITHUB_PUBLISH_TOKEN --repository muttleyxd/dayz-unix-launcher --file-glob "/tmp/build/*.deb"
   volumes:
   - name: package
     path: /tmp/build
@@ -262,7 +262,7 @@ steps:
       from_secret: github_publish_key
   commands:
     - cd /tmp/build
-    - github-release --token $GITHUB_PUBLISH_TOKEN --repository muttleyxd/arma3-unix-launcher --file-glob "/tmp/build/*.deb"
+    - github-release --token $GITHUB_PUBLISH_TOKEN --repository muttleyxd/dayz-unix-launcher --file-glob "/tmp/build/*.deb"
   volumes:
   - name: package
     path: /tmp/build

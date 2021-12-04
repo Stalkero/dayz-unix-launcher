@@ -4,7 +4,7 @@ set -euxo pipefail
 SELF_PATH=`dirname "$(readlink -f $0)"`
 cd "$SELF_PATH"
 
-A3UL_DIR="${1:-/arma3-unix-launcher}"
+A3UL_DIR="${1:-/dayz-unix-launcher}"
 BUILD_DIR="${2:-/tmp/build}"
 OUTPUT_DIR="${3:-/build}"
 STEAMWORKS_SDK_PATH="${4:-}"
@@ -35,6 +35,6 @@ pushd $BUILD_DIR
     make install DESTDIR=$PKG_DIR
   popd
 
-  QMAKE=/qt/5.15.2/gcc_64/bin/qmake LD_LIBRARY_PATH=/qt/5.15.2/gcc_64/lib:$PKG_DIR/usr/share/arma3-unix-launcher/lib linuxdeploy --appdir appimage/ --plugin qt --output appimage
+  QMAKE=/qt/5.15.2/gcc_64/bin/qmake LD_LIBRARY_PATH=/qt/5.15.2/gcc_64/lib:$PKG_DIR/usr/share/dayz-unix-launcher/lib linuxdeploy --appdir appimage/ --plugin qt --output appimage
   cp -n *.AppImage $OUTPUT_DIR || true # -n flag doesn't seem to work on Docker Ubuntu 16.04 at 24th of May, 2020
 popd

@@ -1,15 +1,15 @@
 # Maintainer: muttleyxd <mateusz[ at ]szychowski.it>
-pkgname=arma3-unix-launcher
+pkgname=dayz-unix-launcher
 pkgver=1
 pkgrel=1
 pkgdesc="Launcher for ArmA 3 on Linux"
 arch=('x86_64')
-url="https://github.com/muttleyxd/arma3-unix-launcher"
+url="https://github.com/muttleyxd/dayz-unix-launcher"
 license=('MIT')
 depends=('fmt' 'pugixml' 'qt5-base' 'qt5-svg')
 makedepends=('cmake' 'make')
-provides=('arma3-unix-launcher')
-conflicts=('arma3-unix-launcher')
+provides=('dayz-unix-launcher')
+conflicts=('dayz-unix-launcher')
 source=()
 md5sums=()
 
