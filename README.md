@@ -1,9 +1,9 @@
-# ArmA 3 Unix Launcher
+# DayZ Unix Launcher
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/8a144e12d9cc4cde90616f0e3f282322)](https://www.codacy.com/manual/muttleyxd/arma3-unix-launcher?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=muttleyxd/arma3-unix-launcher&amp;utm_campaign=Badge_Grade) [![Build Status](https://img.shields.io/drone/build/muttleyxd/arma3-unix-launcher?label=Linux%20build&logo=drone)](https://cloud.drone.io/muttleyxd/arma3-unix-launcher) [![Actions Status](https://img.shields.io/github/workflow/status/muttleyxd/arma3-unix-launcher/Mac%20OS%20X%20release%20deployment/master?label=Mac%20OS%20X%20build)](https://github.com/muttleyxd/arma3-unix-launcher/actions)
 
-ArmA 3 Launcher for Linux and Mac.
-Since Bohemia didn't port their launcher to Linux and Mac and existing launcher didn't satisfy my needs I decided to create my own.
+DayZ Launcher for Linux and Mac.
+This is unofficial DayZ launcher for linux with mod support
 
 ## Table of contents
 
@@ -14,13 +14,6 @@ Since Bohemia didn't port their launcher to Linux and Mac and existing launcher 
 * [Sceenshots](#screenshots)
 
 ## Installing
-### From package
-
-For Debian based distributions (Debian, Ubuntu), Arch based distributions (Arch, Manjaro) and Mac OS X there are packages available in [releases tab!](https://github.com/muttleyxd/arma3-unix-launcher/releases)
-
-For Arch based distributions there's an AUR package available - it's called `arma3-unix-launcher-bin`
-
-    yay -S arma3-unix-launcher-bin
 
 ### Building from source
 
@@ -43,8 +36,8 @@ Requirements:
     brew install gcc cmake qt
 
 #### Build process
-    git clone https://github.com/muttleyxd/arma3-unix-launcher.git
-    cd arma3-unix-launcher
+    git clone https://github.com/stalkero/dayz-unix-launcher.git
+    cd dayz-unix-launcher
     mkdir build
     cd build
     cmake ..
@@ -52,12 +45,12 @@ Requirements:
 
 After that you can launch with
 
-    ./src/arma3-unix-launcher/arma3-unix-launcher
+    ./src/dayz-unix-launcher/dayz-unix-launcher
 
 ### Launch parameters
 
 ```shell
-Usage: arma3-unix-launcher [options] 
+Usage: dayz-unix-launcher [options] 
 
 Optional arguments:
 -h --help          	show this help message and exit
@@ -74,6 +67,3 @@ Example:
 arma3-unix-launcher --preset-to-run testmod --server-ip 127.0.0.1 --server-port 1234 --server-password asdasd
 ```
 
-## Screenshots
-
-<img src="https://i.imgur.com/t2HXjY5.png" width="400"><img src="https://i.imgur.com/sAetuqr.png" width="400">
