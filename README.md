@@ -63,6 +63,6 @@ Optional arguments:
 
 Example:
 ```shell
-arma3-unix-launcher --preset-to-run testmod --server-ip 127.0.0.1 --server-port 1234 --server-password asdasd
+dayz-unix-launcher --preset-to-run testmod --server-ip 127.0.0.1 --server-port 1234 --server-password asdasd
 ```
 
