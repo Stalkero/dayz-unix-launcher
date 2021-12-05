@@ -31,9 +31,6 @@ Requirements:
 #### Fedora
     dnf install gcc gcc-c++ cmake qt5-qtbase qt5-qtsvg qt5-qtbase-devel qt5-qtsvg-devel spdlog-devel
 
-#### Mac OS X
-    brew install gcc cmake qt
-
 #### Build process
     git clone https://github.com/stalkero/dayz-unix-launcher.git
     cd dayz-unix-launcher
