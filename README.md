@@ -1,6 +1,6 @@
 # DayZ Unix Launcher
 
-DayZ Launcher for Linux and Mac.
+DayZ Launcher for Linux
 This is unofficial DayZ launcher for linux with mod support
 
 ## Table of contents
