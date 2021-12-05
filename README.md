@@ -8,7 +8,6 @@ This is unofficial DayZ launcher for linux with mod support
 ## Table of contents
 
 * [Installing](#installing)
-    * [From package](#from-package)
     * [Building from source](#building-from-source)
 * [Launch parameters](#launch-parameters)
 * [Sceenshots](#screenshots)
